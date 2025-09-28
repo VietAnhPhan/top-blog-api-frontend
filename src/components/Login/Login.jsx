@@ -34,7 +34,7 @@ function Login(props) {
       }
 
       auth.setToken(result.token);
-
+      
       localStorage.setItem("access_token", result.token);
       localStorage.setItem("userId", result.userId);
       navigate("/");
