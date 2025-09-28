@@ -45,17 +45,20 @@ function Home(props) {
   }, []);
 
   return (
-    <div>
+    <div className="pt-32">
       <title>{`Homepage | ${props.sitename}`}</title>
-      <h1>This is home page</h1>
+      <div className="text-center">
+        <h1>From the blog</h1>
+        <p>Learn how to grow your business with our expert advice.</p>
+      </div>
       {posts.length > 0 && (
-        <ul>
+        <ul className="grid grid-cols-3 mt-16 gap-8 gap-x-8">
           {posts.map((post, index) => {
             if (post.isPublished) {
               return (
                 <li key={index}>
-                  <h2>{post.title}</h2>
-                  <p>{post.body}</p>
+                  <h2 className="text-4xl font-medium">{post.title}</h2>
+                  <p>{post.body.slice(0, 100)}</p>
                   <p>{post.author.username}</p>
                 </li>
               );
