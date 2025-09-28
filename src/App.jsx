@@ -9,6 +9,7 @@ import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 import Profile from "./components/Profile/Profile";
 import NewPost from "./components/NewPost/NewPost.jsx";
+import AuthorPosts from "./components/AuthorPosts/AuthorPosts.jsx";
 import { AuthContext } from "./Context";
 
 const router = createBrowserRouter([
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/your-posts",
+    element: <AuthorPosts />,
   },
   {
     path: "/new-post",
