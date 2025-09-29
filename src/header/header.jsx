@@ -38,7 +38,7 @@ export const Header = () => {
         {authContext.token ? (
           <>
             <li>
-              <a href="/your-posts">Your posts</a>
+              <a href="/your-posts">My blog</a>
             </li>
             <li>
               <a href="/new-post">New post</a>
