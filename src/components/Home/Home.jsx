@@ -45,7 +45,7 @@ function Home(props) {
   }, []);
 
   return (
-    <div className="pt-32">
+    <div className="container">
       <title>{`Homepage | ${props.sitename}`}</title>
       <div className="text-center">
         <h1>From the blog</h1>

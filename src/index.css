@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 @layer components {
   .button-solid {
     border-radius: 8px;
@@ -24,6 +25,13 @@
     cursor: pointer;
     transition: border-color 0.25s;
     /* color: white; */
+  }
+}
+
+@layer utilities{
+  .container {
+    padding-top: 8rem;
+    margin: 0 auto;
   }
 }
 
