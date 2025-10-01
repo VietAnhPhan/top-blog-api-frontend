@@ -7,14 +7,17 @@ function Home(props) {
 
   useEffect(() => {
     async function getPosts() {
-      const response = await fetch("http://localhost:3000/posts", {
-        method: "GET",
+      const response = await fetch(
+        "http://localhost:3000/posts?isPublish=true",
+        {
+          method: "GET",
 
-        // headers: {
-        //   "Content-type": "application/json",
-        //   Authorization: `bearer ${authContext.token}`,
-        // },
-      });
+          // headers: {
+          //   "Content-type": "application/json",
+          //   Authorization: `bearer ${authContext.token}`,
+          // },
+        }
+      );
 
       const result = await response.json();
       // const listOfPosts = await Promise.all(
