@@ -28,7 +28,7 @@
   }
 }
 
-@layer utilities{
+@layer utilities {
   .container {
     padding-top: 8rem;
     margin: 0 auto;
@@ -93,4 +93,8 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+textarea {
+  border: 1px solid black;
 }
