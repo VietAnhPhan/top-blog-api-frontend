@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../Context";
+import { useEffect, useState } from "react";
+// import { AuthContext } from "../../Context";
 
 function Home(props) {
-  const authContext = useContext(AuthContext);
+  // const authContext = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -10,35 +10,35 @@ function Home(props) {
       const response = await fetch("http://localhost:3000/posts", {
         method: "GET",
 
-        headers: {
-          "Content-type": "application/json",
-          Authorization: `bearer ${authContext.token}`,
-        },
+        // headers: {
+        //   "Content-type": "application/json",
+        //   Authorization: `bearer ${authContext.token}`,
+        // },
       });
 
       const result = await response.json();
-      const listOfPosts = await Promise.all(
-        result.posts.map(async (post) => {
-          const authorResponse = await fetch(
-            `http://localhost:3000/users/${post.authorId}`,
-            {
-              method: "GET",
-              headers: {
-                "Content-type": "application/json",
-                Authorization: `bearer ${authContext.token}`,
-              },
-            }
-          );
+      // const listOfPosts = await Promise.all(
+      //   result.posts.map(async (post) => {
+      //     const authorResponse = await fetch(
+      //       `http://localhost:3000/users/${post.authorId}`,
+      //       {
+      //         method: "GET",
+      //         headers: {
+      //           "Content-type": "application/json",
+      //           Authorization: `bearer ${authContext.token}`,
+      //         },
+      //       }
+      //     );
 
-          const authorObj = await authorResponse.json();
+      //     const authorObj = await authorResponse.json();
 
-          post.author = authorObj.user;
+      //     post.author = authorObj.user;
 
-          return post;
-        })
-      );
+      //     return post;
+      //   })
+      // );
 
-      setPosts(listOfPosts);
+      setPosts(result.posts);
     }
 
     getPosts();
@@ -59,7 +59,7 @@ function Home(props) {
                 <li key={index}>
                   <h2 className="text-4xl font-medium">{post.title}</h2>
                   <p>{post.body.slice(0, 100)}</p>
-                  <p>{post.author.username}</p>
+                  {/* <p>{post.author.username}</p> */}
                 </li>
               );
             }
