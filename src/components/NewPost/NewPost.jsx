@@ -56,7 +56,7 @@ const NewPost = () => {
   return (
     <>
       <div className="container">
-        <h1>Create new post</h1>
+        <h1 className="text-center">Create new post</h1>
         <form>
           <label htmlFor="title">Title</label>
           <input
@@ -64,6 +64,7 @@ const NewPost = () => {
             placeholder="Your title here"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            className="w-full"
           />
           <Editor
             apiKey="no-api-key"
@@ -102,7 +103,7 @@ const NewPost = () => {
             }}
             onEditorChange={(newValue, editor) => setBody(newValue)}
           />
-          <div className="flex gap-2.5">
+          <div className="flex gap-2.5 justify-center mt-16">
             <button
               type="button"
               className="button-solid"
