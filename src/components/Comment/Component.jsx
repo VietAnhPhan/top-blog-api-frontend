@@ -22,8 +22,10 @@ const Comment = (props) => {
     }
     return;
   }
+
   return (
     <>
+    <p>ID: {comment.id}</p>
       <p>Title: {comment.post.title}</p>
       <p>{comment.user.username}</p>
       <p>at {comment.created_at}</p>
@@ -33,15 +35,26 @@ const Comment = (props) => {
         cols={100}
         onChange={(e) => setComment({ ...comment, comment: e.target.value })}
       ></textarea>
-      <button
-        type="button"
-        className="button-solid"
-        onClick={() => {
-          handleSubmit(comment.id);
-        }}
-      >
-        Submit
-      </button>
+      <div className="flex gap-4">
+        <button
+          type="button"
+          className="button-solid"
+          onClick={() => {
+            handleSubmit(comment.id);
+          }}
+        >
+          Submit
+        </button>
+        <button
+          type="button"
+          className="button-solid"
+          onClick={() => {
+            props.deleteComment(comment.id);
+          }}
+        >
+          Delete
+        </button>
+      </div>
     </>
   );
 };

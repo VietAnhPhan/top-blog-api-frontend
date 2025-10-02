@@ -8,6 +8,42 @@ const AuthorPosts = () => {
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
 
+  async function deleteComment(commentId) {
+    const response = await fetch(
+      `http://localhost:3000/comments/${commentId}`,
+      {
+        method: "DELETE",
+
+        headers: {
+          Authorization: `bearer ${authContext.token}`,
+        },
+      }
+    );
+
+    if (response.ok) {
+      const response = await fetch(
+        `http://localhost:3000/comments?authorId=${authContext.userId}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `bearer ${authContext.token}`,
+          },
+        }
+      );
+
+      if (response.ok) {
+        const result = await response.json();
+        // console.log(result);
+        // return;
+
+        setComments(result.comments);
+      }
+    }
+    return;
+  }
+
+  console.log(comments);
   useEffect(() => {
     async function getPosts() {
       const response = await fetch("http://localhost:3000/posts", {
@@ -47,6 +83,7 @@ const AuthorPosts = () => {
     getPosts();
     getComments();
   }, [authContext.userId, authContext.token]);
+
   return (
     <>
       <div className="container">
@@ -74,6 +111,7 @@ const AuthorPosts = () => {
                   <Comment
                     comment={comment}
                     authContext={authContext}
+                    deleteComment={deleteComment}
                   ></Comment>
                 </li>
               );
