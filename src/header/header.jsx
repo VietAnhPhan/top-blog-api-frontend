@@ -41,7 +41,7 @@ export const Header = () => {
               <a href="/your-posts">My blog</a>
             </li>
             <li>
-              <a href="/new-post">New post</a>
+              <a href="/new-post">Write post</a>
             </li>
             <li>
               <button type="button" className="p-0" onClick={() => logout()}>
