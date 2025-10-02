@@ -43,7 +43,6 @@ const AuthorPosts = () => {
     return;
   }
 
-  console.log(comments);
   useEffect(() => {
     async function getPosts() {
       const response = await fetch("http://localhost:3000/posts", {
@@ -105,9 +104,9 @@ const AuthorPosts = () => {
         <h2 className="text-center mt-16">Comments from readers</h2>
         {comments.length > 0 && (
           <ul>
-            {comments.map((comment, index) => {
+            {comments.map((comment) => {
               return (
-                <li className="pt-5" key={index}>
+                <li className="pt-5" key={comment.id}>
                   <Comment
                     comment={comment}
                     authContext={authContext}
